@@ -2,7 +2,6 @@ use minidump::*;
 use minidump_processor::{Symbolizer,symbols};
 use anyhow::{self};
 use std::path::PathBuf;
-use serde_json::Value;
 use serde::{Deserialize,Serialize};
 use memmap2::*;
 use std::io::Write;
@@ -52,7 +51,7 @@ fn default_hash_map()->HashMap<String,String>{
 
 
 //读取dmp文件信息
-pub async fn read_mini_dmp(data: &mut [u8])-> Result<DumpDetail,anyhow::Error>{
+pub async fn read_mini_dmp(data: Vec<u8>)-> Result<DumpDetail,anyhow::Error>{
     //写入到mmap
     let mut mmap = MmapMut::map_anon(data.len())?;
     (&mut mmap[..]).write(&data)?;

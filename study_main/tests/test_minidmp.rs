@@ -1,8 +1,9 @@
 use minidmp::read_mini_dmp;
 use common::download_binary_file;
 
-#[tokio::main]
-async fn main() {
+
+#[tokio::test]
+async fn test_read_mini_dmp(){
     println!("{:?}","1222");
     let data = download_binary_file(&"https://github.com/rust-minidump/rust-minidump/raw/main/testdata/test.dmp").await;
     match data {
@@ -18,3 +19,5 @@ async fn main() {
            Err(e) => println!("occur err: {e:?}"),
     }
 }
+
+
