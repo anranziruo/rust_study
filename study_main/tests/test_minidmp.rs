@@ -4,7 +4,6 @@ use common::download_binary_file;
 
 #[tokio::test]
 async fn test_read_mini_dmp(){
-    println!("{:?}","1222");
     let data = download_binary_file(&"https://github.com/rust-minidump/rust-minidump/raw/main/testdata/test.dmp").await;
     match data {
            Ok(v) => {
