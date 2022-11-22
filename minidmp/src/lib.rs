@@ -76,7 +76,6 @@ pub async fn read_mini_dmp(data: Vec<u8>)-> Result<DumpDetail,anyhow::Error>{
     //进行反序列化
     let json_str = String::from_utf8(json_output)?;
     let mut dmp_detail:DumpDetail = serde_json::from_str(&json_str)?;
-
     //对齐火狐的堆栈
     let mut index = 0;
     for frame in dmp_detail.crashing_thread.frames.iter_mut(){
