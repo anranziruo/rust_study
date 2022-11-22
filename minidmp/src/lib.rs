@@ -11,7 +11,7 @@ use std::collections::HashMap;
 #[derive(Serialize,Deserialize,Debug,Clone)]
 pub struct DumpDetail {
     modules:Vec<ModuleItem>,
-    uploaded_modules:Vec<ModuleItem>,
+    unloaded_modules:Vec<ModuleItem>,
     threads:Vec<ThreadItem>,
     crashing_thread:ThreadItem,
 }
