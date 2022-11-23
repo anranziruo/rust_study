@@ -8,3 +8,6 @@ edition = "2021"
 [dependencies]
 reqwest = { version = "0.11", features = ["json"] }
 anyhow="1.0.58"
+base64ct = { version = "1.5.3", features = ["std"] }
+sha-1 = "0.10.0"
+

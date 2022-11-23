@@ -1,5 +1,5 @@
 use minidmp::read_mini_dmp;
-use common::download_binary_file;
+use common::*;
 
 
 #[tokio::test]
@@ -17,6 +17,22 @@ async fn test_read_mini_dmp(){
            },
            Err(e) => println!("occur err: {e:?}"),
     }
+}
+
+#[test]
+fn test_base64(){
+    let encode = String::from("hello");
+    let encode_str = base64_encode(encode.as_bytes().to_vec());
+    println!("{:?}",encode_str);
+    let decode_str = base64_decode(encode_str);
+    let decode = String::from_utf8(decode_str).unwrap();
+    println!("{:?}",decode);
+}
+
+#[test]
+fn test_sha1(){
+    let sha1_str = sha1WithString(String::from("123456"));
+    println!("{:?}",sha1_str);
 }
 
 
