@@ -104,8 +104,8 @@ pub async fn read_mini_dmp(data: Vec<u8>)-> Result<DumpDetail,anyhow::Error>{
                 let frame_offset_num = i64::from_str_radix(&frame_offset,16)?;
                 frame.offset = Some(format!("{:#018x}",frame_offset_num+1));
             }
+            index = index+1;
         }
-        index = index+1;
     }
 
     Ok(dmp_detail)
