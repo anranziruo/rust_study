@@ -36,6 +36,7 @@ async fn test_read_mini_dmp_local(){
        }
 }
 
+
 #[test]
 fn test_base64(){
     let encode = String::from("hello");
