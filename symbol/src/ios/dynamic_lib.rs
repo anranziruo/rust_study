@@ -2,6 +2,7 @@ use anyhow::{Result};
 use object::{Object,ObjectSection,ObjectSegment};
 use std::{fs};
 use memmap2::Mmap;
+use crate::util::demangle_name;
 
 pub fn get_symbol_table(symbol_path:&str)->Result<(),anyhow::Error>{
     let file = fs::File::open(&symbol_path)?;
@@ -22,7 +23,7 @@ pub fn get_symbol_table(symbol_path:&str)->Result<(),anyhow::Error>{
 
     let symbols  = object.symbol_map();
     for symbol_item in symbols.symbols(){
-        println!("{:?}",symbol_item)
+        println!("{:?}",demangle_name(symbol_item.name()))
     }
     Ok(())
 }
