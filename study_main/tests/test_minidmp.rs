@@ -1,5 +1,6 @@
 use minidmp::read_mini_dmp;
 use common::*;
+use std::{fs::File, io::Read,env};
 
 
 #[tokio::test]
@@ -17,6 +18,22 @@ async fn test_read_mini_dmp(){
            },
            Err(e) => println!("occur err: {e:?}"),
     }
+}
+
+#[tokio::test]
+async fn test_read_mini_dmp_local(){
+    println!("{:?}",env::current_dir());
+    let mut file = File::open("../test_data/test.dmp").unwrap();
+    let mut contents = Vec::new();
+    file.read_to_end(&mut contents);
+    
+    let dmp_detail = read_mini_dmp(contents).await;
+        match dmp_detail {
+            Ok(v) => {
+                //  println!("{:?}",serde_json::to_value(v).unwrap().to_string());
+                },
+            Err(e) => println!("occur err: {e:?}"),
+       }
 }
 
 #[test]

@@ -56,7 +56,6 @@ pub async fn read_mini_dmp(data: Vec<u8>)-> Result<DumpDetail,anyhow::Error>{
     let mut mmap = MmapMut::map_anon(data.len())?;
     (&mut mmap[..]).write(&data)?;
     let mmap = mmap.make_read_only()?;
-
     let dump = Minidump::read(mmap).map_err(|error| error)?;
 
     //设置空路径
@@ -72,6 +71,11 @@ pub async fn read_mini_dmp(data: Vec<u8>)-> Result<DumpDetail,anyhow::Error>{
     
     let mut json_output = Vec::new();
     state.print_json(&mut json_output, false).map_err(|error| error)?;
+
+    let mut print_str = Vec::new();
+    state.print(&mut print_str).map_err(|error| error)?;
+    let print_str_out = String::from_utf8(print_str)?;
+    println!("{:?}",print_str_out);
      
     //进行反序列化
     let json_str = String::from_utf8(json_output)?;
