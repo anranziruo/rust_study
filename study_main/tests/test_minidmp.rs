@@ -23,7 +23,7 @@ async fn test_read_mini_dmp(){
 #[tokio::test]
 async fn test_read_mini_dmp_local(){
     println!("{:?}",env::current_dir());
-    let mut file = File::open("../test_data/test.dmp").unwrap();
+    let mut file = File::open("../test_data/dmp/test.dmp").unwrap();
     let mut contents = Vec::new();
     file.read_to_end(&mut contents);
     
