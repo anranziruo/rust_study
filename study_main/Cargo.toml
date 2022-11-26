@@ -8,5 +8,6 @@ edition = "2021"
 [dependencies]
 minidmp = { version = "0.1.0", path = "../minidmp"}
 common = { version = "0.1.0", path = "../common"}
+symbol = { version = "0.1.0", path = "../symbol"}
 tokio = {version = "1.21.2", features = ["full"] }
 serde_json="1.0"
