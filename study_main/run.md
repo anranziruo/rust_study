@@ -1,0 +1,1 @@
+cargo test --package study_main --test test_symbol -- test_windows_sys_pdb --exact --nocapture 
