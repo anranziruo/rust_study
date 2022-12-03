@@ -1,5 +1,6 @@
 use symbol::ios::dynamic_lib;
 use symbol::windows::sys_pdb;
+use symbol::windows::app_pdb;
 
 #[test]
 fn test_ios_symbol_table(){
@@ -50,6 +51,18 @@ fn test_windows_sys_pdb_symbolic(){
 #[test]
 fn test_windows_sys_pdb(){
     let dmp_detail = sys_pdb::get_sym_pdb("../test_data/windows/sys/dcomp.pdb");
+    match dmp_detail {
+        Ok(v) => {
+            // println!("{:?}",serde_json::to_value(v).unwrap().to_string());
+            },
+        Err(e) => println!("occur err: {e:?}"),
+    }
+}
+
+
+#[test]
+fn test_app_pdb(){
+    let dmp_detail = app_pdb::get_app_pdb_ymbolic("../test_data/windows/app/foo.pdb");
     match dmp_detail {
         Ok(v) => {
             // println!("{:?}",serde_json::to_value(v).unwrap().to_string());
