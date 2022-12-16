@@ -8,6 +8,7 @@ pub fn get_app_pdb_ymbolic(symbol_path:&str)->Result<(),anyhow::Error>{
     let sessions = object.debug_session()?;
     for session in sessions.functions(){
         let sess = session?;
+        println!("{:?}",sess);
         for fun in sess.inlinees{
             println!("{:?}",fun)
         }
